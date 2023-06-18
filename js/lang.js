@@ -32,8 +32,8 @@ const textTranslations = {
         ru: 'Frontend разработчик'
     },
     "location_info": {
-        en: '29 years old, Tashkent',
-        ru: '29 лет, Ташкент'
+        en: '30 years old, Tashkent',
+        ru: '30 лет, Ташкент'
     },
     "about_me_title": {
         en: 'About me',
