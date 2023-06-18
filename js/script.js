@@ -89,19 +89,14 @@ window.addEventListener('load', function() {
         }
     };
 });
-// Получаем текущее значение количества пользователей из localStorage
 let userCount = localStorage.getItem('userCount');
-
-// Если значение не было сохранено ранее, устанавливаем его в 1
 if (!userCount) {
     userCount = 1;
     localStorage.setItem('userCount', userCount);
     }else {
-    // Если значение уже было сохранено, увеличиваем его на 1 и сохраняем обновленное значение
       userCount = parseInt(userCount) + 1;
       localStorage.setItem('userCount', userCount);
 }
-// Используем значение количества пользователей, например, для вывода на страницу
 console.log(`Количество пользователей: ${userCount}`);
 
 
