@@ -88,8 +88,8 @@ const textTranslations = {
         ru: 'Landing страница - Contactor-X'
     },
     "portfolio_text4": {
-        en: 'Landing Page - RitmStyle',
-        ru: 'Landing страница - RitmStyle'
+        en: 'Landing Page - RitmStyle (in developing)',
+        ru: 'Landing страница - RitmStyle (В разработке)'
     },
     "portfolio_text5": {
         en: 'Intensive Course on Frontend Development',
