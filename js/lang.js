@@ -32,8 +32,8 @@ const textTranslations = {
         ru: 'Frontend разработчик'
     },
     "location_info": {
-        en: '30 years old, Tashkent',
-        ru: '30 лет, Ташкент'
+        en: '29 years old, Tashkent',
+        ru: '29 лет, Ташкент'
     },
     "about_me_title": {
         en: 'About me',
@@ -86,6 +86,18 @@ const textTranslations = {
     "portfolio_text3": {
         en: 'Landing Page - Contactor-X',
         ru: 'Landing страница - Contactor-X'
+    },
+    "portfolio_text4": {
+        en: 'Landing Page - RitmStyle',
+        ru: 'Landing страница - RitmStyle'
+    },
+    "portfolio_text5": {
+        en: 'Intensive Course on Frontend Development',
+        ru: 'Интенсивный курс по Фронтенд-Разработке'
+    },
+    "portfolio_text6": {
+        en: 'anDesign',
+        ru: 'Landing страница - anDesign'
     },
     "footer_contacts": {
         en: 'Contacts',

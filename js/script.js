@@ -34,9 +34,7 @@ if (menuLinks.length > 0) {
         }
     }
 }
-//меняем цвет активной ссылки при reload
-//добавляем в адрес ru en 
-//меняем язык страницы с масива lang.js при клике на ru | en
+
 const headerChangeLang = document.querySelector('.header__swith-mobile');
 const headerLinks = document.querySelectorAll('.header__swith-mobile a');
 const changeLang = document.querySelector('.informatinon__switch-on');
@@ -89,20 +87,84 @@ window.addEventListener('load', function() {
         }
     };
 });
-let userCount = localStorage.getItem('userCount');
-if (!userCount) {
-    userCount = 1;
-    localStorage.setItem('userCount', userCount);
-    }else {
-      userCount = parseInt(userCount) + 1;
-      localStorage.setItem('userCount', userCount);
+//AOS
+
+function showModal() {
+    const userKey = 'user_data';
+    const user = JSON.parse(localStorage.getItem(userKey)) || {};
+    let timeLeftUntilNextModal = 600;
+    const modal1 = document.createElement('div');
+    modal1.classList.add('modal1');
+    const currentTime = new Date().getTime();
+    const lastModalTime = user.lastModalTime || 0;
+    const timeSinceLastModal = currentTime - lastModalTime;
+
+    if (timeSinceLastModal > 600000) {
+        setTimeout(function () {
+            overlay.style.display = 'block';
+            document.body.appendChild(modal1);
+
+            const countdownInterval = setInterval(function () {
+                console.log(`Времени до следующего появления модального окна: ${timeLeftUntilNextModal} секунд`);
+                timeLeftUntilNextModal--;
+
+                if (timeLeftUntilNextModal <= 0) {
+                    clearInterval(countdownInterval);
+                }
+            }, 1000);
+        }, 1000);
+    }
+
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.placeholder = 'Введите ваше имя';
+    const button = document.createElement('button');
+    button.innerText = 'Далее';
+    modal1.appendChild(input);
+    modal1.appendChild(button);
+
+    const overlay = document.createElement('div');
+    overlay.classList.add('overlay');
+    document.body.appendChild(overlay);
+
+    button.addEventListener('click', function () {
+        const modal2 = document.createElement('div');
+        modal2.classList.add('modal2');
+        const name = input.value || 'Гость';
+        const message = document.createElement('p');
+        message.innerText = `Добро пожаловать на мою страницу, ${name}!`;
+        modal2.appendChild(message);
+        modal2.addEventListener('click', function () {
+            modal2.remove();
+            overlay.remove();
+        });
+
+        setTimeout(function () {
+            modal2.remove();
+            overlay.remove();
+        }, 3000);
+
+        const timer = document.createElement('p');
+        timer.classList.add('timer');
+        timer.style.textAlign = 'center';
+        let count = 3;
+        timer.innerText = `${count}`;
+        modal2.appendChild(timer);
+
+        const interval = setInterval(function () {
+            count--;
+            timer.innerText = `${count}`;
+            if (count <= 0) {
+                clearInterval(interval);
+                overlay.style.display = 'none';
+            }
+        }, 1000);
+
+        modal1.remove();
+        document.body.appendChild(modal2);
+        user.lastModalTime = new Date().getTime();
+        localStorage.setItem(userKey, JSON.stringify(user));
+    });
 }
-console.log(`Количество пользователей: ${userCount}`);
 
-
-
-
-
-
-
-
+window.addEventListener('load', showModal);
